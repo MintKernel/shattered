@@ -184,6 +184,7 @@ public class Potion extends Item {
 	public Potion() {
 		super();
 		reset();
+		setKnown();
 	}
 	
 	//anonymous potions are always IDed, do not affect ID status,
