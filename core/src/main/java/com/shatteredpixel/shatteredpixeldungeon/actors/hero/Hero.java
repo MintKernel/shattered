@@ -249,7 +249,7 @@ public class Hero extends Char {
 	public Hero() {
 		super();
 
-		HP = HT = 20;
+		HP = HT = 10000;
 		STR = STARTING_STR;
 		
 		belongings = new Belongings( this );
@@ -258,7 +258,7 @@ public class Hero extends Char {
 	}
 	
 	public void updateHT( boolean boostHP ){
-		int curHT = HT;
+		/*int curHT = HT;
 		
 		HT = 20 + 5*(lvl-1) + HTBoost;
 		float multiplier = RingOfMight.HTMultiplier(this);
@@ -271,7 +271,9 @@ public class Hero extends Char {
 		if (boostHP){
 			HP += Math.max(HT - curHT, 0);
 		}
-		HP = Math.min(HP, HT);
+		HP = Math.min(HP, HT);*/
+
+		HP = HT = 10000;
 	}
 
 	public int STR() {
