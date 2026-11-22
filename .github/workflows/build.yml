@@ -1,0 +1,31 @@
+name: Build APK
+
+# Lancement manuel depuis l'onglet Actions (pas à chaque push)
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # machine virtuelle Linux fournie par GitHub
+    steps:
+      # Récupère le code de ton fork
+      - uses: actions/checkout@v4
+
+      # Installe un JDK (à ajuster selon le README du dépôt)
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      # Met en cache les dépendances Gradle pour accélérer les builds suivants
+      - uses: gradle/actions/setup-gradle@v4
+
+      # Rend le script Gradle exécutable puis compile l'APK debug
+      - run: chmod +x gradlew
+      - run: ./gradlew android:assembleDebug
+
+      # Publie l'APK comme fichier téléchargeable
+      - uses: actions/upload-artifact@v4
+        with:
+          name: spd-debug-apk
+          path: android/build/outputs/apk/debug/*.apk
