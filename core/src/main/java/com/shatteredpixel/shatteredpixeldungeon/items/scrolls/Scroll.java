@@ -138,6 +138,7 @@ public abstract class Scroll extends Item {
 	public Scroll() {
 		super();
 		reset();
+		setKnown();
 	}
 	
 	//anonymous scrolls are always IDed, do not affect ID status,
